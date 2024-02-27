@@ -26,7 +26,7 @@ const { notFound, welcome } = require("./server/constant/templates");
 app.use(express.static("uploads"));
 app.use(helmet());
 if (NODE_ENV === "development") app.use(morgan("dev"));
-app.use(cors({ origin: [FRONTEND_URL] }));
+app.use(cors());
 app.use(express.json());
 app.use("/api", routes);
 
