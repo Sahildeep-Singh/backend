@@ -19,9 +19,10 @@ const DB = {
   DB_NAME: process.env.MONGO_DB_NAME,
 };
 DB.MONGO_URI =
-  DB.USER_NAME && DB.PASS && DB.IP
+  process.env.MONGO_URI ||
+  (DB.USER_NAME && DB.PASS && DB.IP
     ? `mongodb://${DB.USER_NAME}:${DB.PASS}@${DB.IP}:27017/${DB.DB_NAME}`
-    : `mongodb://localhost:27017/${DB.DB_NAME}`;
+    : `mongodb://localhost:27017/${DB.DB_NAME}`);
 
 const URL = {
   FRONTEND_URL: process.env.FRONTEND_URL,
